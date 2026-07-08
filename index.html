@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brando Calrissian</title>
+<meta name="description" content="Brando Calrissian is a producer and composer based in London. Lofi, electronic, ambient, synthwave, and more.">
+
+<!-- Open Graph / social preview -->
+<meta property="og:title" content="Brando Calrissian">
+<meta property="og:description" content="Producer. Composer. Student of the craft.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://brandocalrissian.com">
+<meta property="og:image" content="https://i.scdn.co/image/ab67616d0000b2730025bade6befbd058d991e54">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:        #0d0d0d;   /* near-black page background */
+    --bg-2:      #141414;   /* raised sections */
+    --ink:       #f4f1ea;   /* cream text */
+    --ink-dim:   #a39e94;   /* muted text */
+    --amber:     #ff5b1e;   /* the Bold-palette orange/amber accent */
+    --amber-2:   #ffb27a;   /* soft amber */
+    --line:      #262626;   /* hairlines */
+    --maxw:      1200px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Archivo', Arial, sans-serif;
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+
+  .display{
+    font-family:'Archivo Black', Arial, sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    line-height:0.95;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:absolute; top:0; left:0; right:0; z-index:10;
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:28px 32px;
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .nav .brand{
+    font-family:'Archivo Black', Arial, sans-serif;
+    text-transform:uppercase; font-size:20px; letter-spacing:0.02em;
+  }
+  .nav .links{ display:flex; gap:28px; font-size:15px; }
+  .nav .links a{ color:var(--ink); opacity:0.85; transition:opacity .2s; }
+  .nav .links a:hover{ opacity:1; color:var(--amber); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center;
+    background:
+      linear-gradient(90deg, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.55) 45%, rgba(13,13,13,0.25) 100%),
+      #0d0d0d;
+    overflow:hidden;
+  }
+  .hero-photo{
+    position:absolute; inset:0;
+    background-image:url('images/hero-suit.jpg');
+    background-size:cover;
+    background-position:center right;
+    z-index:-1;
+  }
+  .hero-inner{ max-width:var(--maxw); margin:0 auto; padding:0 32px; width:100%; }
+  .hero h1{ font-size:clamp(48px, 9vw, 128px); }
+  .hero .tagline{
+    margin-top:22px; font-size:clamp(16px,2vw,22px);
+    color:var(--ink); font-weight:500; max-width:32ch;
+  }
+  .btn{
+    display:inline-block; margin-top:38px;
+    background:var(--amber); color:#0d0d0d;
+    font-family:'Archivo Black', Arial, sans-serif;
+    text-transform:uppercase; letter-spacing:0.04em;
+    font-size:16px; padding:18px 54px; border-radius:100px;
+    transition:transform .18s, background .18s;
+  }
+  .btn:hover{ transform:translateY(-2px); background:var(--amber-2); }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:110px 0; }
+  .eyebrow{
+    font-family:'Archivo Black', Arial, sans-serif;
+    text-transform:uppercase; color:var(--amber);
+    font-size:clamp(30px,5vw,56px); line-height:1;
+    margin-bottom:44px;
+  }
+
+  /* ---------- PRESS PLAY ---------- */
+  .play{ background:var(--bg-2); text-align:center; }
+  .play .eyebrow{ margin-bottom:34px; }
+  .play .player{
+    max-width:560px; margin:0 auto;
+    border-radius:12px; overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  }
+  .play iframe{ display:block; width:100%; border:0; }
+
+  /* ---------- ABOUT ---------- */
+  .about h2{ font-size:clamp(34px,6vw,68px); margin-bottom:34px; max-width:16ch; }
+  .about p{
+    font-size:clamp(16px,1.5vw,19px); color:var(--ink);
+    max-width:60ch; line-height:1.7;
+  }
+
+  /* ---------- FEATURED GRID ---------- */
+  .featured{ background:var(--bg-2); }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+    max-width:960px;
+  }
+  .cover{
+    position:relative; display:block;
+    aspect-ratio:1/1; border-radius:8px; overflow:hidden;
+    background:#000;
+    transition:transform .22s;
+  }
+  .cover img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background:rgba(0,0,0,0); transition:background .22s;
+  }
+  .cover:hover{ transform:translateY(-4px); }
+  .cover:hover::after{ background:rgba(255,91,30,0.14); }
+  .cover .play-badge{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    opacity:0; transition:opacity .22s; z-index:2;
+  }
+  .cover:hover .play-badge{ opacity:1; }
+  .cover .play-badge svg{ width:52px; height:52px; filter:drop-shadow(0 4px 12px rgba(0,0,0,.6)); }
+  .disco{ margin-top:44px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--bg); border-top:1px solid var(--line); padding:80px 0 60px; }
+  .foot-grid{
+    display:flex; align-items:flex-start; justify-content:space-between;
+    gap:40px; flex-wrap:wrap;
+  }
+  .foot-name{ font-size:clamp(32px,5vw,56px); line-height:0.95; }
+  .foot-right{ text-align:right; }
+  .foot-email{
+    display:inline-block; color:var(--amber);
+    font-size:17px; font-weight:600; margin-bottom:24px;
+    border-bottom:1px solid var(--amber);
+    padding-bottom:2px;
+  }
+  .socials{ display:flex; gap:14px; justify-content:flex-end; }
+  .socials a{
+    width:44px; height:44px; border-radius:8px;
+    background:#000; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    transition:background .2s, border-color .2s;
+  }
+  .socials a:hover{ background:var(--amber); border-color:var(--amber); }
+  .socials a:hover svg{ fill:#0d0d0d; }
+  .socials svg{ width:20px; height:20px; fill:var(--ink); transition:fill .2s; }
+  .credit{
+    margin-top:56px; font-size:13px; color:var(--ink-dim);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+  .credit a{ color:var(--ink-dim); border-bottom:1px solid var(--line); }
+  .credit a:hover{ color:var(--amber); }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width:760px){
+    .nav .links{ gap:18px; font-size:14px; }
+    .hero{ background:
+      linear-gradient(180deg, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.85) 100%),
+      #0d0d0d; }
+    .hero-photo{ background-position:center 20%; opacity:0.5; }
+    section{ padding:80px 0; }
+    .grid{ grid-template-columns:repeat(2, 1fr); gap:16px; }
+    .foot-grid{ flex-direction:column; }
+    .foot-right{ text-align:left; }
+    .socials{ justify-content:flex-start; }
+    .foot-email{ font-size:15px; word-break:break-all; }
+  }
+
+  /* respect reduced motion */
+  @media (prefers-reduced-motion:reduce){
+    *{ transition:none !important; scroll-behavior:auto; }
+  }
+
+  :focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="brand">Brando Calrissian</a>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#featured">Featured</a>
+      <a href="#listen">Listen</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-photo" role="img" aria-label="Brando Calrissian"></div>
+  <div class="hero-inner">
+    <h1 class="display">Brando<br>Calrissian</h1>
+    <p class="tagline">Lofi transmissions from somewhere past the orbit.</p>
+    <a href="#listen" class="btn">Listen</a>
+  </div>
+</section>
+
+<!-- PRESS PLAY -->
+<section class="play" id="listen">
+  <div class="wrap">
+    <div class="eyebrow">Press Play</div>
+    <div class="player">
+      <iframe
+        src="https://open.spotify.com/embed/artist/3Bxt9QNF41BUviq7jwQhP4?utm_source=generator&theme=0"
+        width="100%" height="352" frameborder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        title="Brando Calrissian on Spotify"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <h2 class="display">Producer. Composer. Student of the craft.</h2>
+    <p>
+      Brando Calrissian is a producer and composer based in London. He grew up
+      swallowing every genre he could find, metal to jazz to country to classical
+      to hip hop, and never picked a lane. He specializes in lofi hip hop but makes
+      electronic, ambient, synthwave, orchestral, and vaporwave whenever the mood
+      pulls him there. He started performing in middle school, started composing his
+      senior year, and has been releasing music relentlessly ever since. He's now
+      studying Music &amp; Sound Production at Ravensbourne University London,
+      sharpening the craft while building a catalog that already runs deep.
+    </p>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="featured" id="featured">
+  <div class="wrap">
+    <div class="eyebrow">Featured</div>
+    <div class="grid">
+
+      <a class="cover" href="https://open.spotify.com/track/1ON7AMQbEjW2hKUWoXaLgA" target="_blank" rel="noopener" aria-label="8-Bit Dreams on Spotify">
+        <img src="https://i.scdn.co/image/ab67616d0000b273d23c492caf956d18f61167f6" alt="8-Bit Dreams cover" loading="lazy">
+        <span class="play-badge">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </a>
+
+      <a class="cover" href="https://open.spotify.com/track/7fn1GeSH3guxmlq35U0Gki" target="_blank" rel="noopener" aria-label="The End of the World Reimagined on Spotify">
+        <img src="https://i.scdn.co/image/ab67616d0000b273a2b3760d074056524aad1ccb" alt="The End of the World cover" loading="lazy">
+        <span class="play-badge">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </a>
+
+      <a class="cover" href="https://open.spotify.com/track/1bkvYJPxXaIISZIhOUZYLK" target="_blank" rel="noopener" aria-label="Why Don't You Love Me on Spotify">
+        <img src="https://i.scdn.co/image/ab67616d0000b273d169c7c4c928d30a5b47a7cb" alt="Why Don't You Love Me cover" loading="lazy">
+        <span class="play-badge">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </a>
+
+      <a class="cover" href="https://open.spotify.com/track/0apJBp4Cf3Sbg3bVG7T7mF" target="_blank" rel="noopener" aria-label="Only Place I Breathe on Spotify">
+        <img src="https://i.scdn.co/image/ab67616d0000b2730025bade6befbd058d991e54" alt="Only Place I Breathe cover" loading="lazy">
+        <span class="play-badge">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </a>
+
+      <a class="cover" href="https://open.spotify.com/track/6WWvxLad2eT8vXVM6DwWar" target="_blank" rel="noopener" aria-label="SYGNS Midnight Walkers Version on Spotify">
+        <img src="https://i.scdn.co/image/ab67616d0000b2731eec34b230a4d9933f73f82f" alt="SYGNS cover" loading="lazy">
+        <span class="play-badge">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </a>
+
+      <a class="cover" href="https://open.spotify.com/track/3F2XhJ4l0OP9KVZLqHdp1X" target="_blank" rel="noopener" aria-label="Beautiful Contempt on Spotify">
+        <img src="https://i.scdn.co/image/ab67616d0000b273d12fce63b21dbab30c964818" alt="Beautiful Contempt cover" loading="lazy">
+        <span class="play-badge">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </a>
+
+    </div>
+    <a class="btn disco" href="https://open.spotify.com/artist/3Bxt9QNF41BUviq7jwQhP4" target="_blank" rel="noopener">Full discography</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-name display">Brando<br>Calrissian</div>
+      <div class="foot-right">
+        <a class="foot-email" href="mailto:brandocalrissian01@gmail.com">brandocalrissian01@gmail.com</a>
+        <div class="socials">
+          <a href="https://open.spotify.com/artist/3Bxt9QNF41BUviq7jwQhP4" target="_blank" rel="noopener" aria-label="Spotify">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.42a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.63.63 0 1 1-.28-1.22c3.81-.87 7.08-.5 9.72 1.11.29.18.39.57.21.86zm1.22-2.72a.78.78 0 0 1-1.08.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.56 11.24 1.34.37.22.49.71.26 1.06zm.11-2.84C14.8 8.09 9.4 7.89 6.3 8.83a.94.94 0 1 1-.54-1.8c3.56-1.08 9.52-.87 13.27 1.35a.94.94 0 1 1-.96 1.62z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@brandocalrissian5666" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.09 0 12 0 12s0 3.91.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.91 24 12 24 12s0-3.91-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/brando_oddcast/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.12 1.38C1.36 2.67.95 3.34.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.72 1.47 1.38 2.13.66.66 1.33 1.07 2.12 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.8-.31 1.47-.72 2.13-1.38.66-.66 1.07-1.33 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.88 5.88 0 0 0-1.38-2.12A5.88 5.88 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+          </a>
+          <a href="https://www.beatstars.com/brandocalrissian01" target="_blank" rel="noopener" aria-label="BeatStars">
+            <svg viewBox="0 0 24 24"><path d="M13.5 2 3 14h7l-1.5 8L21 10h-7z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="credit">
+      <span>&copy; 2026 Oddcast Records</span>
+      <span>A Collective Code website</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
